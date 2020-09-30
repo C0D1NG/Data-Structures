@@ -6,7 +6,6 @@ public class NeilKerman_largestElement {
         int max_element = Arrays.stream(array).max().getAsInt(); //Using Array Streams to find the largest element
         System.out.println("Largest element in the array is " + max_element); //Output
     } 
-  
 } 
 
 //Code by NeilKerman
