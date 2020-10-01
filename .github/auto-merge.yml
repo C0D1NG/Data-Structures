@@ -1,4 +1,5 @@
-requiredReviewers:
-- G1Joshi
-minApprovals:
-  OWNER: 1
+rules:
+- minApprovals:
+    OWNER: 1
+- requiredReviewers:
+    - G1Joshi
