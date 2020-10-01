@@ -8,6 +8,20 @@ struct Node {
 
 struct Node* head = NULL;
 
+//fn to count Node from list
+
+int count()
+{
+    Node*a=head;
+    int cnt=0;
+    while(a!=NULL)
+    {
+        cnt++;
+        a=a->next;
+    }
+    return cnt;
+}
+
 void insertEnd(int x) {
     struct Node* new = (struct Node *)malloc(sizeof(struct Node));
     new->data = x;
@@ -54,6 +68,7 @@ int main() {
         scanf("%d", &x);
         insertEnd(x);
     }
+    printf("\nNode Count:%d",count());
     printf("Original list: ");
     print();
     reverse();
