@@ -50,11 +50,11 @@ class BST {
 }
 
 let tree = new BST();
-tree.insertRecursive(10);
-tree.insertRecursive(7);
-tree.insertRecursive(5);
-tree.insertRecursive(6);
-tree.insertRecursive(100);
-tree.insertRecursive(-1);
-tree.insertRecursive(17);
+tree.insert(10);
+tree.insert(7);
+tree.insert(5);
+tree.insert(6);
+tree.insert(100);
+tree.insert(-1);
+tree.insert(17);
 console.log(tree.DFSInOrder());
