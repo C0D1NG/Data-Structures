@@ -16,7 +16,7 @@ namespace BinaryTreeHeight
 				root = AddToTree(root, nodeDataArray[i]);
 			}
 
-			// CB 2020-10-04 Calculate the height of the tree and output
+			// CB 2020-10-04 Calculate the max of the tree and output
 			var height = CalculateMax(root);
 			Console.WriteLine("The max in the binary tree is: " + height);
 		}
