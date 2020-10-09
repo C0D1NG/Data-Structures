@@ -37,11 +37,11 @@ class BST {
     }
   }
 
-  DFSInOrder() {
+  DFSPreOrder() {
     let data = [];
     function traverse(node) {
-      if (node.left) traverse(node.left);
       data.push(node.val);
+      if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
     }
     traverse(this.root);
@@ -56,5 +56,5 @@ tree.insert(5);
 tree.insert(6);
 tree.insert(100);
 tree.insert(-1);
-tree.insert(17);
-console.log(tree.DFSInOrder());
+tree.insert(77);
+console.log(tree.DFSPreOrder());
