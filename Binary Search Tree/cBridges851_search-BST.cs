@@ -21,7 +21,7 @@ namespace BinaryTreeHeight
 			// CB 2020-10-10 Input the data to search for
 			Console.Write("Enter the data you wish to search for: ");
 			var data = Convert.ToInt32(Console.ReadLine());
-			// CB 2020-10-04 Calculate the sum of the nodes in tree and output
+			// CB 2020-10-04 Call the method to search for the node, starting at depth 0
 			SearchNode(root, data, 0);
 		}
 		
