@@ -11,11 +11,11 @@ namespace BinaryTreeHeight
 			Node root = null;
 			
 			// CB 2020-10-04 Store all the data values of the nodes in an array
-			var nodeDataArray = GetData();
+			var nodeDataList = GetData();
 			
 			// CB 2020-10-04 Loop through all the node values and add the nodes to the tree
-			for (int i = 0; i < nodeDataArray.Length; i++){
-				root = AddToTree(root, nodeDataArray[i]);
+			for (int i = 0; i < nodeDataList.Count; i++){
+				root = AddToTree(root, nodeDataList[i]);
 			}
 			
 			// CB 2020-10-04 Calculate the size of the tree and output
@@ -24,20 +24,28 @@ namespace BinaryTreeHeight
 		}
 		
 		// CB 2020-10-04 Creating an array that will contain all of the values that will be in the nodes
-		static int[] GetData(){
-			Console.Write("How many nodes will there be in the binary tree? ");
-			var size = Convert.ToInt32(Console.ReadLine());
-			
-			var nodeDataArray = new int[size];
+		static List<int> GetData(){
+			var nodeDataList = new List<int>();
 			
 			// CB 2020-10-04 Retrieving the values of all the nodes
-			for (int i = 1; i <= size; i++){
-				Console.Write("Please insert node " + i + "'s value: ");
-				nodeDataArray[i-1] = Convert.ToInt32(Console.ReadLine());
+			var isFinishedInputting = false;
+			
+			while (!isFinishedInputting){
+				Console.Write("Please insert a value: ");
+				var currentValue = Convert.ToInt32(Console.ReadLine());
+				nodeDataList.Add(currentValue);
+				
+				Console.Write("Would you like to input another value? y/n ");
+				var valueInput = Console.ReadLine();
+				
+				if (valueInput.ToLower() == "n" || valueInput.ToLower() == "no"){
+					isFinishedInputting = true;
+				}
+				
 			}
 			
 			// CB 2020-10-04 Returning the final array of node values to the main program
-			return nodeDataArray;
+			return nodeDataList;
 		}
 		
 		static Node AddToTree (Node root, int data){
