@@ -1,14 +1,15 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<conio.h>
-struct node
+typedef struct Node
 {
 int data;
-struct node *link;
-};
-struct node *top,*p;
+struct Node *link;
+}node;
+ node *top,*p;
 void push()
 {
-p=(struct node*)malloc(sizeof(struct node));
+p=( node*)malloc(sizeof( node));
 printf("Enter the number\n");
 scanf("%d",&p->data);
 p->link=NULL;
@@ -37,7 +38,7 @@ free(p);
 }
 void display()
 {
-struct node *temp;
+node *temp;
 temp=top;
 if(temp==NULL)
 {
@@ -46,12 +47,11 @@ printf("Stack is empty\n");
 else
 {
 printf("Stack:\n");
-while(temp->link!=NULL)
+while(temp!=NULL)
 {
 printf("%d\n",temp->data);
 temp=temp->link;
 }
-printf("%d\n",temp->data);
 }
 }
 void main()
