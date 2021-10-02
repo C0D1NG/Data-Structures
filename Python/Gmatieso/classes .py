@@ -9,3 +9,5 @@ class Apple:
 jonagold = Apple()
 jonagold.color = "Red"
 jonagold.flavor = "Sweet"
+#print out the output
+print(jonagold.color)
