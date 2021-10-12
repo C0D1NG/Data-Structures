@@ -11,3 +11,5 @@ jonagold.color = "Red"
 jonagold.flavor = "Sweet"
 #print out the output
 print(jonagold.color)
+"""used Syntax to access the attribute  called Dot notation"""
+print(jonagold.flavor) 
