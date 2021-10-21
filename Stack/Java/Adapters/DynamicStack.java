@@ -1,4 +1,4 @@
-public class DynamicStack {
+public class DynamicQueue {
     private class Node {
         int data;
         Node next;
@@ -11,7 +11,7 @@ public class DynamicStack {
     private int size, front, rear;
     Node head, tail;
 
-    DynamicStack () {
+    DynamicQueue () {
         initialize();
     }
 
