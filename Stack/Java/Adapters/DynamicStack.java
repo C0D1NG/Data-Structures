@@ -1,68 +1,51 @@
-public class DynamicQueue {
+
+public class DynamicStack2 {
     private class Node {
         int data;
         Node next;
+
+        Node() {
+
+        }
 
         Node(int data) {
             this.data = data;
         }
     }
 
-    private int size, front, rear;
-    Node head, tail;
+    private Node head, tail;
+    private int size;
 
-    DynamicQueue () {
-        initialize();
+    DynamicStack2() {
+        intiallize();
     }
 
-    private void initialize() {
+    protected void intiallize() {
+        this.head = null;
+        this.tail = null;
         this.size = 0;
-        this.head = this.tail = null;
-        this.front = this.rear = 0;
     }
 
     public int getSize() {
         return this.size;
-
     }
 
     public boolean isEmpty() {
         return this.getSize() == 0;
-
     }
 
-    public void add(int data) {
-        addLast(new Node(data));
-    }
-
-    private void addLast(Node node) {
-        if (this.getSize() == 0) {
-            this.head = this.tail = node;
-        } else {
-            this.tail.next = node;
-            this.tail = node;
-        }
-
-        this.size++;
-
-    }
-
-    private void QisEMptyException() throws Exception {
+    private void stackIsEmpty() throws Exception {
         if (this.isEmpty())
-            throw new Exception("Underflow occured : Queue is Empty");
-    }
-
-    public int remove() throws Exception {
-        QisEMptyException();
-        return removeFirst();
+            throw new Exception("Undeflow Error: Stack is Empty");
     }
 
     private int removeFirst() {
-        int data = this.head.data;
-        if (this.getSize() == 1) {
+        Node currhead = this.head;
+        int data = currhead.data;
+        if (this.size == 1) {
             this.head = this.tail = null;
         } else {
-            Node forw = this.head.next;
+            Node forw = currhead.next;
             this.head.next = null;
             this.head = forw;
         }
@@ -71,23 +54,50 @@ public class DynamicQueue {
         return data;
     }
 
+    private void addFirst(Node node) {
+        if (this.head == null) {
+            this.head = this.tail = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
+        this.size++;
+    }
+
+    public void push(int data) {
+        addFirst(new Node(data));
+    }
+
+    public int pop() throws Exception {
+        stackIsEmpty();
+        return removeFirst();
+    }
+
     public int peek() throws Exception {
-        QisEMptyException();
+        isEmpty();
         return this.head.data;
+
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         Node curr = this.head;
-        int size = this.size;
-        sb.append('[');
-        for (int i = 0; i < size; i++) {
-            sb.append(curr.data);
+        int[] temp = new int[this.size];
+        int i = this.size - 1;
+        // to get the element in reverse order : default print behaviour of stack
+        while (curr != null) {
+            // sb.append(curr.data + ", ");
+            temp[i--] = curr.data;
             curr = curr.next;
-            if (i != size - 1)
-                sb.append(", ");
         }
+
+        sb.append('[');
+
+        for (int idx = 0; idx < temp.length - 1; idx++)
+            sb.append(temp[idx] + ", ");
+            
+        sb.append(temp[temp.length - 1]);
 
         sb.append(']');
         return sb.toString();
