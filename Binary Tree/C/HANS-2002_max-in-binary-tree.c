@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+
 // Node structure of the binary tree
 struct node
 {
@@ -18,13 +20,13 @@ struct node *newNode(int data)
     return (node);
 }
 
-int sumOfNodes(struct node *root)
+int maxNode(struct node *root)
 {
     if (root == NULL)
         return 0;
-    int leftSum = sumOfNodes(root->left);
-    int rightSum = sumOfNodes(root->right);
-    return (root->data + leftSum + rightSum);
+    int leftSum = maxNode(root->left);
+    int rightSum = maxNode(root->right);
+    return max(root->data, max(leftSum, rightSum));
 }
 
 int main()
@@ -45,6 +47,6 @@ int main()
            4   5 6    7
     */
 
-    printf("Sum of nodes = %d\n", sumOfNodes(root));
+    printf("Max node in binary tree = %d\n", maxNode(root));
     return 0;
 }
