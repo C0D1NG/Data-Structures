@@ -17,31 +17,20 @@ struct node *makeNewNode(int data)
     return temp;
 }
 
-void inorderDfs(struct node *root)
+void bfs(struct node *root)
 {
-    if (root == NULL)
-        return;
-    inorderDfs(root->left);
-    printf("%d ", root->data);
-    inorderDfs(root->right);
-}
-
-void preorderDfs(struct node *root)
-{
-    if (root == NULL)
-        return;
-    printf("%d ", root->data);
-    preorderDfs(root->left);
-    preorderDfs(root->right);
-}
-
-void postorderDfs(struct node *root)
-{
-    if (root == NULL)
-        return;
-    postorderDfs(root->left);
-    postorderDfs(root->right);
-    printf("%d ", root->data);
+    struct node *queue[100];
+    int front = 0, rear = 0;
+    queue[rear++] = root;
+    while (front != rear)
+    {
+        struct node *temp = queue[front++];
+        printf("%d ", temp->data);
+        if (temp->left != NULL)
+            queue[rear++] = temp->left;
+        if (temp->right != NULL)
+            queue[rear++] = temp->right;
+    }
 }
 
 int main()
@@ -61,11 +50,7 @@ int main()
          / \ / \
         4  5 6  7
     */
-    printf("\nInorder DFS traversal: ");
-    inorderDfs(root);
-    printf("\nPreorder DFS traversal: ");
-    preorderDfs(root);
-    printf("\nPostorder DFS traversal: ");
-    postorderDfs(root);
+    printf("BFS traversal: ");
+    bfs(root);
     return 0;
 }
