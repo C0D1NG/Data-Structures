@@ -1,4 +1,4 @@
-public class adityarajbhagat2002_inorder {
+public class adityarajbhagat2002_preorder {
 
     static class Node {
         int data;
@@ -12,12 +12,12 @@ public class adityarajbhagat2002_inorder {
         return (node);
     }
 
-    static void inorder(Node root) {
+    static void preorder(Node root) {
         if (root == null)
             return;
-        inorder(root.left);
         System.out.print(root.data + " ");
-        inorder(root.right);
+        preorder(root.left);
+        preorder(root.right);
     }
 
     public static void main(String args[]) {
@@ -30,7 +30,7 @@ public class adityarajbhagat2002_inorder {
         root.right.right = Tree(7);
         root.right.left.right = Tree(8);
         root.right.right.right = Tree(9);
-        System.out.print("Inorder traversal of nodes of Binary Tree is: ");
-        inorder(root);
+        System.out.print("preorder traversal of nodes of Binary Tree is: ");
+        preorder(root);
     }
 }
